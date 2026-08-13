@@ -14,8 +14,8 @@ O. Deniz Akyildiz.
   absent.
 
 This repository is the normalized copy of
-icml26-repro-hCIBCAS1Hi-sosmc. The proposed canonical repository name is
-icml26-sosmc-sequential-monte-carlo.
+icml26-repro-hCIBCAS1Hi-sosmc. The canonical repository is
+[icml26-sosmc-sequential-monte-carlo](https://github.com/MachineLearning-Nerd/icml26-sosmc-sequential-monte-carlo).
 
 ## Paper
 
@@ -27,9 +27,9 @@ analyzes idealized convergence and ESS behavior and evaluates reward tuning
 for Langevin processes and energy-based models, including MNIST.
 
 - Authors: James Cuin, Davide Carbone, Yanbo Tang, and O. Deniz Akyildiz
-- arXiv: 2601.22003v1
-- Paper page: https://arxiv.org/abs/2601.22003v1
-- HTML paper: https://arxiv.org/html/2601.22003v1
+- Audit source pin: arXiv 2601.22003v1
+- Latest paper record: [arXiv 2601.22003v2](https://arxiv.org/abs/2601.22003)
+- HTML paper: https://arxiv.org/html/2601.22003
 - OpenReview record: https://openreview.net/forum?id=hCIBCAS1Hi
 - Official author code: https://github.com/akyildiz-group/SOSMC
 
@@ -100,9 +100,8 @@ does not convert special-case calculations into general theorem verification.
 ## Branch policy
 
 The historical repository had one branch, master. The normalized repository
-uses one canonical branch, main. Legacy branch names are removed after
-publication. See BRANCH_AUDIT.md for the migration record and attribution
-policy.
+uses one canonical branch, main; the legacy master branch has been removed.
+See BRANCH_AUDIT.md for the migration record and attribution policy.
 
 ## Citation
 

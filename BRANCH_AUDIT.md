@@ -30,9 +30,9 @@ MachineLearning-Nerd
 
 No Claude co-author trailer is permitted in the canonical history.
 
-## Verification checklist
+## Verification result
 
-The final publication check must confirm:
+The final publication check confirmed:
 
 1. GitHub metadata uses the canonical repository name and main as default.
 2. The only remote branch is main.
@@ -41,3 +41,6 @@ The final publication check must confirm:
 4. Paginated commit attribution reports MachineLearning-Nerd for every
    reachable commit.
 5. No reachable commit contains the old Claude co-author trailer.
+
+Remote audit result: repository renamed, default branch `main`, sole branch
+`main`, and all reachable commits attribute to MachineLearning-Nerd.

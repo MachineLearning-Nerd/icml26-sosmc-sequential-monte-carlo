@@ -2,7 +2,7 @@
 
 Paper: Efficient Stochastic Optimisation via Sequential Monte Carlo
 Authors: James Cuin, Davide Carbone, Yanbo Tang, and O. Deniz Akyildiz
-Reference: arXiv:2601.22003v1
+Audit source pin: arXiv:2601.22003v1; latest paper record: arXiv:2601.22003v2
 
 ## Conservative result
 

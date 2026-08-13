@@ -1,16 +1,18 @@
 #!/usr/bin/env python
 """
-Clean-room reproduction / verification of:
+Clean-room finite-evidence audit of:
 
   "Efficient Stochastic Optimisation via Sequential Monte Carlo" (SOSMC)
   arXiv:2601.22003 , OpenReview hCIBCAS1Hi , ICML 2026.
 
-This script independently verifies the paper's core mathematical claims on a
-fully-specified, CPU-scale, synthetic instance.  Nothing is imported from any
-author release; every quantity is computed from first principles.
+This script produces bounded finite or special-case diagnostics on a
+fully-specified, CPU-scale, synthetic instance. Nothing is imported from any
+author release; every quantity is computed from first principles. Passing a
+diagnostic does not independently verify the corresponding general paper
+claim.
 
-CLAIMS VERIFIED
----------------
+SCOPED EVIDENCE AUDITED
+-----------------------
   c1  Algorithm 1 (SOSMC) -- the self-normalised particle gradient estimate
        g_k = sum_i w_i H_theta(x_i) is a consistent estimator of grad l(theta)
        (Lemma 1); i.e. SOSMC replaces the inner MCMC chain of SOUL by a
