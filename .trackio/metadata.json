@@ -1,9 +1,18 @@
 {
-  "paper_arxiv": "2601.22033",
+  "paper_arxiv": "2601.22003",
   "paper_orid": "hCIBCAS1Hi",
+  "paper_title": "Efficient Stochastic Optimisation via Sequential Monte Carlo",
+  "authors": [
+    "James Cuin",
+    "Davide Carbone",
+    "Yanbo Tang",
+    "O. Deniz Akyildiz"
+  ],
   "tags": [
     "icml2026-repro",
-    "paper-hCIBCAS1Hi"
+    "sosmc",
+    "evidence-audit"
   ],
-  "last_page": "conclusion"
+  "status": "INCONCLUSIVE: 5/5 finite or special-case proxies pass; 0/6 paper claims verified",
+  "last_page": "overview"
 }

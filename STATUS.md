@@ -1,22 +1,28 @@
-# STATUS — hCIBCAS1Hi SOSMC
+# SOSMC — audit status
 
-**Paper:** Efficient Stochastic Optimisation via Sequential Monte Carlo (arXiv 2601.22033)
-**State:** GATE-COMPLETE 5/6 = 10 pts. **Enqueued** to canonical backlog (entry 168). COORDINATION row → `publication_queued`.
+Paper: Efficient Stochastic Optimisation via Sequential Monte Carlo
+Authors: James Cuin, Davide Carbone, Yanbo Tang, and O. Deniz Akyildiz
+Reference: arXiv:2601.22003v1
 
-## Done
-- Clean-room numpy verifier `repro/src/verify.py` — all 6 claim checks + negative controls.
-- 5/6 claims VERIFIED: c1 (Algo1/Lemma1 consistency), c2 (Prop2 PL rate, machine-precision tight PL inequality + neg controls), c3 (Eq19 ESS identity + Props3/4 general χ², machine precision), c4 (variance-reduction mechanism), c5 (tracking). c6 MNIST EBM = honest negative.
-- 4 independent unit tests `repro/tests/test_sosmc.py` — all PASS.
-- trackio logbook built (tags `icml2026-repro`, `paper-hCIBCAS1Hi`); `outputs/verdict.json`, `outputs/verify_run.log`.
-- `publication_gate.json` + `GATE_READY.md` (FULL_GATE_READY marker).
-- Enqueued: `scripts/enqueue_backlog.py` → backlog entry 168.
-- COORDINATION.md row inserted, status `publication_queued`.
+## Conservative result
 
-## Next (not blocking — drain owns HF)
-- **HF Space:** the shared `drain_forever.sh`/`backlog_drain.py` will publish `DineshAI/hCIBCAS1Hi` on its next pass (quota slot). Verify the Space + tags afterward, then set COORDINATION hf_space + status `under_verdict`.
-- **GitHub mirror (BLOCKED, needs user `!`):**
-  `! cd papers/icml26-repro-hCIBCAS1Hi-sosmc && git init && git add -A && git commit -m "SOSMC repro 5/6" && gh repo create MachineLearning-Nerd/icml26-repro-hCIBCAS1Hi-sosmc --public --source=. --remote=origin --push`
-- Poll `verdicts.json` after publish; if any claim lands `toy`/`inconclusive`, add full-scale evidence and republish.
+**Overall: INCONCLUSIVE**
 
-## Blockers
-- `gh repo create --public` + `git push` are auto-mode-blocked (needs user `!`). HF (the scoring surface) publishes via the drain regardless.
+- Bounded finite or special-case diagnostics passed: 5/5.
+- Paper-level claims independently verified: 0/6.
+- C6 MNIST EBM robustness: NOT_REPRODUCED.
+
+The prior 5/6 VERIFIED label counted selected-instance calculations as
+general paper verification. It is superseded by outputs/verdict.json.
+
+| Claim | Current status |
+| --- | --- |
+| C1 consistency | FINITE_CONSISTENCY_PROXY |
+| C2 PL convergence | CONDITIONAL_EXACT_CERTIFICATE |
+| C3 ESS behavior | CONDITIONAL_EXACT_CERTIFICATE |
+| C4 variance reduction | FINITE_VARIANCE_REDUCTION_PROXY |
+| C5 gradient tracking | FINITE_TRACKING_PROXY |
+| C6 MNIST robustness | NOT_REPRODUCED |
+
+The missing general SMC algorithm, full EBM experiments, baselines, and MNIST
+campaign are described in the README.

@@ -1,13 +1,17 @@
 # Overview
 
+## Executive summary
 
----
-<!-- trackio-cell
-{"type": "markdown", "id": "cell_830db0fd9457", "created_at": "2026-07-26T13:50:43+00:00", "title": "Efficient Stochastic Optimisation via Sequential Monte Carlo"}
--->
-# Efficient Stochastic Optimisation via Sequential Monte Carlo
+**Overall status: INCONCLUSIVE**
 
-OpenReview: https://openreview.net/forum?id=hCIBCAS1Hi
-arXiv: https://arxiv.org/abs/2601.22033
+The clean-room audit passes 5/5 finite or special-case diagnostics, while
+independently verifying 0/6 paper-level claims. The MNIST EBM robustness
+experiment is an explicit negative because it is not present.
 
-Clean-room CPU reproduction. 6 anchored claims (12 possible points). All claims verified at full scale.
+- Paper: Efficient Stochastic Optimisation via Sequential Monte Carlo
+- Authors: James Cuin, Davide Carbone, Yanbo Tang, and O. Deniz Akyildiz
+- arXiv: 2601.22003v1
+- Official code: https://github.com/akyildiz-group/SOSMC
+
+The previous 5/6 VERIFIED label is historical and superseded by the
+conservative claim ledger.

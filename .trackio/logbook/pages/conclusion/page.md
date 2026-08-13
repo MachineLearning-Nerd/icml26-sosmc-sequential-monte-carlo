@@ -1,20 +1,13 @@
 # Conclusion
 
+The repository provides useful clean-room checks for a coherent Gaussian and
+quadratic instance:
 
----
-<!-- trackio-cell
-{"type": "markdown", "id": "cell_7848f5c93832", "created_at": "2026-07-26T13:51:06+00:00", "title": "Executive summary"}
--->
-## Executive summary
+- C1 is a finite consistency proxy.
+- C2 and C3 are conditional exact certificates for selected special cases.
+- C4 and C5 are finite mechanism and tracking proxies.
+- C6 is not reproduced.
 
-5/6 claim checks PASS for **Efficient Stochastic Optimisation via Sequential Monte Carlo** (`hCIBCAS1Hi`). Clean-room numpy verification on CPU (<1 min, <100 MB). Each claim verified at full scale with an independent mechanism and negative controls; no toy/proxy results.
-
-## Scope & cost
-
-| | This reproduction | Full replication |
-|---|---|---|
-| Scope | all claims, clean-room | same |
-| Hardware | CPU (numpy) | same |
-| Time | <1 min | same |
-| Cost | $0 | $0 |
-| Outcome | verified | — |
+These results support further investigation but do not establish the full
+SOSMC paper. The canonical publication status is INCONCLUSIVE with 0/6
+paper-level claims independently verified.

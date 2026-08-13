@@ -451,43 +451,164 @@ def main():
     print("=" * 78)
     print("SOSMC (arXiv:2601.22003, hCIBCAS1Hi) -- clean-room claim verification")
     print("=" * 78)
+    claim_metadata = {
+        "c1": {
+            "paper_statement": (
+                "Algorithm 1 and Lemma 1: the SOSMC weighted particle gradient "
+                "estimator is consistent."
+            ),
+            "status": "FINITE_CONSISTENCY_PROXY",
+            "limitations": [
+                "This uses direct samples from one known Gaussian instead of SMC propagation, incremental weights, and resampling.",
+                "A finite Monte Carlo slope does not establish consistency for every admissible target and kernel sequence.",
+            ],
+        },
+        "c2": {
+            "paper_statement": (
+                "Proposition 2: the idealized update has the stated linear rate "
+                "under PL and smoothness assumptions."
+            ),
+            "status": "CONDITIONAL_EXACT_CERTIFICATE",
+            "limitations": [
+                "The exact certificate instantiates a selected quadratic loss satisfying the assumptions; it is not a proof of the general proposition.",
+                "The implemented update is deterministic gradient descent, not the full particle SMC optimizer.",
+            ],
+        },
+        "c3": {
+            "paper_statement": (
+                "Equation 19 and Propositions 3–4: ESS has the stated Gaussian "
+                "identity and general small-step behavior."
+            ),
+            "status": "CONDITIONAL_EXACT_CERTIFICATE",
+            "limitations": [
+                "The exact identity is checked for equal-covariance Gaussian targets and the general term is evaluated on one numerical quartic grid.",
+                "These special cases do not establish the paper's general asymptotic ESS result.",
+            ],
+        },
+        "c4": {
+            "paper_statement": (
+                "Section 5: SOSMC reduces variance and improves optimization "
+                "relative to the relevant sampling baselines."
+            ),
+            "status": "FINITE_VARIANCE_REDUCTION_PROXY",
+            "limitations": [
+                "The single-chain SOUL comparison is a hand-built ULA proxy, not the paper's full EBM or ImpDiff benchmark.",
+                "Finite MSE slopes on one synthetic instance do not establish the reported application-level advantage.",
+            ],
+        },
+        "c5": {
+            "paper_statement": (
+                "The particle estimates track the true gradient during the "
+                "optimization trajectory."
+            ),
+            "status": "FINITE_TRACKING_PROXY",
+            "limitations": [
+                "Tracking is measured on one closed-form Gaussian/quadratic instance with direct samples.",
+                "The paper's evolving-target SMC kernels, resampling decisions, and application experiments are absent.",
+            ],
+        },
+    }
     results = {}
     for name, fn in [("c1", check_c1), ("c2", check_c2), ("c3", check_c3),
                      ("c4", check_c4), ("c5", check_c5)]:
         print(f"\n--- {name} ---")
         r = fn()
+        r.update(claim_metadata[name])
+        r["finite_proxy_passed"] = bool(r.get("passed"))
+        r["paper_claim_verified"] = False
+        r["production_path"] = [
+            "repro/src/verify.py",
+            "outputs/verdict.json",
+        ]
         results[name] = r
         print(json.dumps(r, indent=2)[:1600])
     results["c6"] = {
         "claim": "c6 MNIST EBM robustness under kernel mismatch",
+        "paper_statement": (
+            "Section 5.3: SOSMC remains robust on MNIST under a kernel mismatch."
+        ),
+        "status": "NOT_REPRODUCED",
         "passed": False,
+        "finite_proxy_passed": False,
+        "paper_claim_verified": False,
         "honest_negative": True,
         "note": "Requires EBM pretraining + Langevin reward tuning on MNIST (GPU/training). "
                 "Not reproduced under the CPU-only campaign; mechanistic prerequisites "
                 "(ESS-governed variance, c3/c4) are verified on the synthetic instance.",
+        "production_path": [
+            "repro/src/verify.py",
+            "outputs/verdict.json",
+        ],
+        "limitations": [
+            "No MNIST EBM pretraining, kernel-mismatch experiment, or reward-tuning run is present.",
+        ],
     }
-    verified = sum(1 for k in ("c1", "c2", "c3", "c4", "c5", "c6") if results[k].get("passed"))
-    points = verified * 2
-    # Flat structure: each claim (c1..c6) is a top-level dict with a "passed" key,
-    # so downstream tooling (build_publish_logbook.py) counts verified/total correctly.
-    summary = dict(results)
-    summary["_summary"] = {
+    claim_names = ("c1", "c2", "c3", "c4", "c5", "c6")
+    finite_proxy_count = sum(
+        1 for name in claim_names if results[name].get("finite_proxy_passed")
+    )
+    paper_claims_verified = sum(
+        1 for name in claim_names if results[name].get("paper_claim_verified")
+    )
+    summary = {
+        "paper": "hCIBCAS1Hi",
+        "title": "Efficient Stochastic Optimisation via Sequential Monte Carlo",
+        "authors": [
+            "James Cuin",
+            "Davide Carbone",
+            "Yanbo Tang",
+            "O. Deniz Akyildiz",
+        ],
+        "arxiv": "2601.22003",
+        "openreview": "hCIBCAS1Hi",
+        "official_code": "https://github.com/akyildiz-group/SOSMC",
+        "scope": (
+            "Independent CPU-only audit of selected finite and special-case "
+            "consequences. The general SOSMC SMC sampler, EBM training, "
+            "ImpDiff comparison, and MNIST experiment are not reproduced here."
+        ),
+        "overall_status": "INCONCLUSIVE",
+        "finite_proxy_diagnostics_passed": finite_proxy_count,
+        "finite_proxy_diagnostics_total": 5,
+        "paper_claims_verified": paper_claims_verified,
+        "paper_claims_total": 6,
+        "full_paper_reproduction": False,
+        "claims": results,
+        "not_reproduced": [
+            "general Algorithm 1 SMC propagation and resampling",
+            "general Lemma 1 consistency over the paper's target/kernel class",
+            "general Proposition 2 theorem",
+            "general Propositions 3–4 ESS asymptotics",
+            "full EBM and ImpDiff experiments",
+            "2D EBM benchmark experiments",
+            "MNIST kernel-mismatch experiment",
+        ],
+        "notes": [
+            "C2 and C3 are retained as conditional exact certificates, not paper-level verification.",
+            "C6 is an honest negative because the required MNIST EBM campaign is absent.",
+            "The prior 5/6 VERIFIED label is superseded by this conservative evidence classification.",
+        ],
+        "_summary": {
         "paper": "Efficient Stochastic Optimisation via Sequential Monte Carlo (SOSMC)",
-        "arxiv": "2601.22033", "orid": "hCIBCAS1Hi",
-        "verified_claims": verified, "total_claims": 6, "points": points,
-        "claims_verified_machine_precision": ["c2", "c3"],
-        "honest_negatives": ["c6"],
-        "scope_note_c4": "variance-reduction mechanism verified; ImpDiff baseline out of scope",
-        "instance": "pi_theta=N(theta,Sigma), f(x)=0.5||x-x_*||^2, l(theta)=0.5||theta-x_*||^2+0.5tr(Sigma)",
+            "arxiv": "2601.22003",
+            "orid": "hCIBCAS1Hi",
+            "finite_proxy_diagnostics_passed": finite_proxy_count,
+            "finite_proxy_diagnostics_total": 5,
+            "paper_claims_verified": paper_claims_verified,
+            "paper_claims_total": 6,
+            "instance": "pi_theta=N(theta,Sigma), f(x)=0.5||x-x_*||^2, l(theta)=0.5||theta-x_*||^2+0.5tr(Sigma)",
+        },
     }
     with open(os.path.join(OUT, "verdict.json"), "w") as fh:
         json.dump(summary, fh, indent=2)
     print("\n" + "=" * 78)
-    print(f"VERDICT: {verified}/6 claims verified  =  {points} pts")
-    for k in ("c1", "c2", "c3", "c4", "c5", "c6"):
-        r = results[k]
-        tag = "PASS" if r.get("passed") else ("NEG" if r.get("honest_negative") else "FAIL")
-        print(f"  {k}: {tag}")
+    print(
+        f"FINITE PROXIES: {finite_proxy_count}/5; "
+        f"PAPER CLAIMS VERIFIED: {paper_claims_verified}/6; "
+        "OVERALL: INCONCLUSIVE"
+    )
+    for k in claim_names:
+        print(f"  {k}: {results[k]['status']}")
     print(f"wrote {os.path.join(OUT, 'verdict.json')}")
     print("=" * 78)
     return summary

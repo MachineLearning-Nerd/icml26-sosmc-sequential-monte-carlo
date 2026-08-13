@@ -1,4 +1,4 @@
-# Repro - Efficient Stochastic Optimisation via Sequential Monte Carlo
+# ICML 2026 — SOSMC
 
 ## Pages
 
