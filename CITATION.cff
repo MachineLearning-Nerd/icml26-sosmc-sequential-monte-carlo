@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this audit, please cite the paper and this repository."
+title: "Efficient Stochastic Optimisation via Sequential Monte Carlo"
+type: software
+version: "1.0.0"
+authors:
+  - family-names: Cuin
+    given-names: James
+  - family-names: Carbone
+    given-names: Davide
+  - family-names: Tang
+    given-names: Yanbo
+  - family-names: Akyildiz
+    given-names: "O. Deniz"
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-sosmc-sequential-monte-carlo"
+url: "https://arxiv.org/abs/2601.22003"
+abstract: "An independent, bounded evidence audit of selected finite and special-case SOSMC consequences."
+keywords:
+  - sequential Monte Carlo
+  - stochastic optimization
+  - effective sample size
+  - reproducibility
+identifiers:
+  - type: doi
+    value: "10.48550/arXiv.2601.22003"
+    description: "Paper DOI"
+preferred-citation:
+  type: article
+  title: "Efficient Stochastic Optimisation via Sequential Monte Carlo"
+  authors:
+    - family-names: Cuin
+      given-names: James
+    - family-names: Carbone
+      given-names: Davide
+    - family-names: Tang
+      given-names: Yanbo
+    - family-names: Akyildiz
+      given-names: "O. Deniz"
+  year: 2026
+  journal: "arXiv preprint arXiv:2601.22003"

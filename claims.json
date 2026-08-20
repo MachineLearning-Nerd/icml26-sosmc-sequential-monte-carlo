@@ -1,0 +1,71 @@
+{
+  "paper": {
+    "title": "Efficient Stochastic Optimisation via Sequential Monte Carlo",
+    "authors": [
+      "James Cuin",
+      "Davide Carbone",
+      "Yanbo Tang",
+      "O. Deniz Akyildiz"
+    ],
+    "arxiv": "2601.22003",
+    "openreview": "hCIBCAS1Hi",
+    "collection_anchor": "hCIBCAS1Hi"
+  },
+  "complete_paper_reproduction": false,
+  "claims": [
+    {
+      "id": "C1",
+      "source_key": "c1",
+      "paper_claim": "Algorithm 1 and Lemma 1: the weighted particle gradient estimator is consistent.",
+      "status": "FINITE_CONSISTENCY_PROXY",
+      "paper_claim_verified": false,
+      "producer": "repro/src/verify.py",
+      "evidence": "outputs/verdict.json:claims.c1"
+    },
+    {
+      "id": "C2",
+      "source_key": "c2",
+      "paper_claim": "Proposition 2: the idealized update has the PL/smooth linear rate.",
+      "status": "CONDITIONAL_EXACT_CERTIFICATE",
+      "paper_claim_verified": false,
+      "producer": "repro/src/verify.py",
+      "evidence": "outputs/verdict.json:claims.c2"
+    },
+    {
+      "id": "C3",
+      "source_key": "c3",
+      "paper_claim": "Equation 19 and Propositions 3-4: ESS has the Gaussian identity and general small-step behavior.",
+      "status": "CONDITIONAL_EXACT_CERTIFICATE",
+      "paper_claim_verified": false,
+      "producer": "repro/src/verify.py",
+      "evidence": "outputs/verdict.json:claims.c3"
+    },
+    {
+      "id": "C4",
+      "source_key": "c4",
+      "paper_claim": "Section 5: SOSMC reduces variance and improves relevant baselines.",
+      "status": "FINITE_VARIANCE_REDUCTION_PROXY",
+      "paper_claim_verified": false,
+      "producer": "repro/src/verify.py",
+      "evidence": "outputs/verdict.json:claims.c4"
+    },
+    {
+      "id": "C5",
+      "source_key": "c5",
+      "paper_claim": "Particle estimates track the true gradient during the optimization trajectory.",
+      "status": "FINITE_TRACKING_PROXY",
+      "paper_claim_verified": false,
+      "producer": "repro/src/verify.py",
+      "evidence": "outputs/verdict.json:claims.c5"
+    },
+    {
+      "id": "C6",
+      "source_key": "c6",
+      "paper_claim": "Section 5.3: SOSMC remains robust on MNIST under kernel mismatch.",
+      "status": "NOT_REPRODUCED",
+      "paper_claim_verified": false,
+      "producer": "repro/src/verify.py honest-negative record",
+      "evidence": "outputs/verdict.json:claims.c6"
+    }
+  ]
+}

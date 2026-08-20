@@ -1,28 +1,33 @@
-# SOSMC — audit status
+# SOSMC audit status
 
-Paper: Efficient Stochastic Optimisation via Sequential Monte Carlo
-Authors: James Cuin, Davide Carbone, Yanbo Tang, and O. Deniz Akyildiz
-Audit source pin: arXiv:2601.22003v1; latest paper record: arXiv:2601.22003v2
+## Conservative verdict
 
-## Conservative result
+- Overall status: INCONCLUSIVE
+- Finite or special-case diagnostics: 5/5
+- Scoped evidence points: 10/12
+- Paper claims independently verified: 0/6
+- Complete paper reproduction: false
+- Current score claim: false
+- Publication allowed: false
+- Scientific runner executed by the standardization pass: false
 
-**Overall: INCONCLUSIVE**
+## Claim statuses
 
-- Bounded finite or special-case diagnostics passed: 5/5.
-- Paper-level claims independently verified: 0/6.
-- C6 MNIST EBM robustness: NOT_REPRODUCED.
+| Claim | Status |
+|---|---|
+| C1 | FINITE_CONSISTENCY_PROXY |
+| C2 | CONDITIONAL_EXACT_CERTIFICATE |
+| C3 | CONDITIONAL_EXACT_CERTIFICATE |
+| C4 | FINITE_VARIANCE_REDUCTION_PROXY |
+| C5 | FINITE_TRACKING_PROXY |
+| C6 | NOT_REPRODUCED |
 
-The prior 5/6 VERIFIED label counted selected-instance calculations as
-general paper verification. It is superseded by outputs/verdict.json.
+The source verdict is outputs/verdict.json. The generated gate is
+publication_gate.json. C2 and C3 remain selected-case certificates, and C6
+remains an explicit negative for the absent MNIST EBM experiment.
 
-| Claim | Current status |
-| --- | --- |
-| C1 consistency | FINITE_CONSISTENCY_PROXY |
-| C2 PL convergence | CONDITIONAL_EXACT_CERTIFICATE |
-| C3 ESS behavior | CONDITIONAL_EXACT_CERTIFICATE |
-| C4 variance reduction | FINITE_VARIANCE_REDUCTION_PROXY |
-| C5 gradient tracking | FINITE_TRACKING_PROXY |
-| C6 MNIST robustness | NOT_REPRODUCED |
+## Scope boundary
 
-The missing general SMC algorithm, full EBM experiments, baselines, and MNIST
-campaign are described in the README.
+The standardization pass changed documentation and metadata only. It did not
+rerun the NumPy verifier, unit checks, author code, EBM training, ImpDiff
+comparison, or MNIST experiment.

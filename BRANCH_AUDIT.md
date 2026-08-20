@@ -1,46 +1,42 @@
 # Branch and attribution audit
 
-## Historical state
+## Repository transition
 
-Before normalization, the repository was:
+- Legacy repository: icml26-repro-hCIBCAS1Hi-sosmc
+- Canonical repository: icml26-sosmc-sequential-monte-carlo
+- Source tip before this documentation pass:
+  a6a000412a96b934a686eb4ffb9817377d3a5860
+- Legacy repository's historical master tip:
+  c1498f92aacb23827587c81215a67b3355385afa
+- Pre-edit recovery bundle:
+  /tmp/icml26-sosmc-before-history.bP5pNw/icml26-sosmc-before-history.bundle
+- Recovery bundle SHA-256:
+  787560583c07af451bc933e7ec8667f54fbde4b97c6f96409ceb3972d2d4e34a
 
-- Name: icml26-repro-hCIBCAS1Hi-sosmc
-- Remote: MachineLearning-Nerd/icml26-repro-hCIBCAS1Hi-sosmc
-- Default branch: master
-- Historical master tip: c1498f92aacb23827587c81215a67b3355385afa
-- Branches observed: master only
-
-The historical commit used loop-sosmc / loop@local and included a Claude
-co-author trailer. That attribution and the overclaiming root message are not
-retained in the normalized published history.
+The old repository used master as its default branch. The canonical published
+repository uses main, and the old branch is not published.
 
 ## Canonical state
 
-- Repository: MachineLearning-Nerd/icml26-sosmc-sequential-monte-carlo
 - Canonical branch: main
-- Legacy master branch: removed after main was published
-- Expected branch count: one
-
-All reachable published commits are normalized to:
+- Published branch count: one
+- Final main tip: recorded in the collection inventory after publication
+- Expected reachable identity:
 
 ~~~text
-MachineLearning-Nerd
-37579156+MachineLearning-Nerd@users.noreply.github.com
+MachineLearning-Nerd <MachineLearning-Nerd@users.noreply.github.com>
 ~~~
 
-No Claude co-author trailer is permitted in the canonical history.
+The prior numeric noreply address was replaced. No Claude co-author trailer
+is permitted in the canonical history.
 
-## Verification result
+## Verification contract
 
-The final publication check confirmed:
+The final verifier checks:
 
-1. GitHub metadata uses the canonical repository name and main as default.
-2. The only remote branch is main.
-3. The main tip contains README.md, STATUS.md, GATE_READY.md,
-   BRANCH_AUDIT.md, the canonical verdict, and the publication gate.
-4. Paginated commit attribution reports MachineLearning-Nerd for every
-   reachable commit.
-5. No reachable commit contains the old Claude co-author trailer.
-
-Remote audit result: repository renamed, default branch `main`, sole branch
-`main`, and all reachable commits attribute to MachineLearning-Nerd.
+1. the exact documentation and gate files are present;
+2. local and remote branch views contain only main;
+3. all reachable author and committer identities use the canonical name and
+   email;
+4. the claim ledger agrees with outputs/verdict.json;
+5. the conservative gate keeps publication_allowed false.

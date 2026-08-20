@@ -1,0 +1,43 @@
+{
+  "paper": {
+    "title": "Efficient Stochastic Optimisation via Sequential Monte Carlo",
+    "authors": [
+      "James Cuin",
+      "Davide Carbone",
+      "Yanbo Tang",
+      "O. Deniz Akyildiz"
+    ],
+    "arxiv": "2601.22003",
+    "openreview": "hCIBCAS1Hi",
+    "collection_anchor": "hCIBCAS1Hi"
+  },
+  "scope": "Independent CPU-only audit of selected finite and special-case consequences. General SOSMC SMC propagation, EBM training, ImpDiff comparison, and MNIST experiment are outside this repository.",
+  "overall_status": "INCONCLUSIVE",
+  "finite_proxy_diagnostics": {
+    "passed": 5,
+    "total": 5
+  },
+  "evidence_points": {
+    "supported": 10,
+    "total": 12
+  },
+  "paper_claims_verified": 0,
+  "paper_claims_total": 6,
+  "claims": {
+    "C1": "FINITE_CONSISTENCY_PROXY",
+    "C2": "CONDITIONAL_EXACT_CERTIFICATE",
+    "C3": "CONDITIONAL_EXACT_CERTIFICATE",
+    "C4": "FINITE_VARIANCE_REDUCTION_PROXY",
+    "C5": "FINITE_TRACKING_PROXY",
+    "C6": "NOT_REPRODUCED"
+  },
+  "complete_paper_reproduction": false,
+  "current_score_claim": false,
+  "publication_allowed": false,
+  "standardization": {
+    "mode": "documentation_only",
+    "scientific_runner_executed": false,
+    "tests_executed": false,
+    "author_implementation_executed": false
+  }
+}

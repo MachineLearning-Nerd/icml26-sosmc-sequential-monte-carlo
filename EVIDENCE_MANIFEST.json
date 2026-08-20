@@ -1,0 +1,79 @@
+{
+  "scope": "bounded_finite_and_special_case_audit_with_explicit_missing_experiments",
+  "evidence_points_supported": 10,
+  "evidence_points_total": 12,
+  "points": [
+    {
+      "id": "E1",
+      "status": "SUPPORTED",
+      "description": "Paper title, authors, arXiv, OpenReview, and collection anchor are pinned.",
+      "source": "outputs/verdict.json"
+    },
+    {
+      "id": "E2",
+      "status": "SUPPORTED",
+      "description": "Audit and latest paper-version references are documented.",
+      "source": "README.md and SOURCE_AUDIT.md"
+    },
+    {
+      "id": "E3",
+      "status": "SUPPORTED",
+      "description": "The official author-code link and independent-audit boundary are recorded.",
+      "source": "README.md and SOURCE_AUDIT.md"
+    },
+    {
+      "id": "E4",
+      "status": "SUPPORTED",
+      "description": "The C1 finite consistency proxy has a committed producer and result.",
+      "source": "outputs/verdict.json:claims.c1"
+    },
+    {
+      "id": "E5",
+      "status": "SUPPORTED",
+      "description": "The C2 selected-case certificate and its limitations are committed.",
+      "source": "outputs/verdict.json:claims.c2"
+    },
+    {
+      "id": "E6",
+      "status": "SUPPORTED",
+      "description": "The C3 selected-case ESS certificate and its limitations are committed.",
+      "source": "outputs/verdict.json:claims.c3"
+    },
+    {
+      "id": "E7",
+      "status": "SUPPORTED",
+      "description": "The C4 finite variance-reduction proxy and its baseline boundary are committed.",
+      "source": "outputs/verdict.json:claims.c4"
+    },
+    {
+      "id": "E8",
+      "status": "SUPPORTED",
+      "description": "The C5 finite tracking proxy and its single-instance boundary are committed.",
+      "source": "outputs/verdict.json:claims.c5"
+    },
+    {
+      "id": "E9",
+      "status": "SUPPORTED",
+      "description": "The C6 MNIST experiment is explicitly recorded as not reproduced.",
+      "source": "outputs/verdict.json:claims.c6"
+    },
+    {
+      "id": "E10",
+      "status": "SUPPORTED",
+      "description": "The historical run log and conservative gate agree with the six-claim record.",
+      "source": "outputs/verify_run.log, outputs/gate.json, and publication_gate.json"
+    },
+    {
+      "id": "E11",
+      "status": "NOT_AVAILABLE",
+      "description": "General SMC propagation, resampling, EBM, ImpDiff, and 2D benchmark evidence is not available.",
+      "source": "SOURCE_AUDIT.md and outputs/verdict.json"
+    },
+    {
+      "id": "E12",
+      "status": "NOT_AVAILABLE",
+      "description": "MNIST EBM kernel-mismatch and reward-tuning evidence is not available.",
+      "source": "outputs/verdict.json:claims.c6"
+    }
+  ]
+}
